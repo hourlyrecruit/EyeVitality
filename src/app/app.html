@@ -162,7 +162,10 @@
       <div class="conditions-grid">
         @for (c of conditions; track c.title) {
           <article class="condition-card reveal" appTiltCard>
-            <div class="cond-icon">{{ c.icon }}</div>
+            <div class="cond-photo">
+              <img [src]="c.photo" alt="{{ c.title }}" loading="lazy" />
+              <span class="cond-icon-badge" aria-hidden="true">{{ c.icon }}</span>
+            </div>
             <h3>{{ c.title }}</h3>
             <p>{{ c.description }}</p>
           </article>

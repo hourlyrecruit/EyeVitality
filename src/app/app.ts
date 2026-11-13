@@ -23,7 +23,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 interface Service { number: string; title: string; description: string; icon: string; }
-interface Condition { title: string; description: string; icon: string; }
+interface Condition { title: string; description: string; icon: string; photo: string; }
 interface Doctor { name: string; role: string; quals: string; exp: string; photo: string; }
 interface HeroPoint { title: string; text: string; }
 interface Stat { value: string; text: string; progress: number; }
@@ -64,12 +64,12 @@ export class App implements AfterViewInit, OnDestroy {
   ];
 
   conditions: Condition[] = [
-    { title: 'Myopia', description: 'Nearsightedness causing distant objects to appear blurry.', icon: '◐' },
-    { title: 'Hyperopia', description: 'Farsightedness making close objects difficult to focus on.', icon: '◑' },
-    { title: 'Cataract', description: 'Clouding of the lens leading to blurred or dim vision.', icon: '◯' },
-    { title: 'Glaucoma', description: 'Increased eye pressure that can damage the optic nerve.', icon: '◇' },
-    { title: 'Dry Eye', description: 'Insufficient or poor-quality tears causing irritation and discomfort.', icon: '≈' },
-    { title: 'Diabetic Retinopathy', description: 'Diabetes-related damage to retinal blood vessels.', icon: '✚' }
+    { title: 'Myopia', description: 'Nearsightedness causing distant objects to appear blurry.', icon: '◐', photo: '/conditions/myopia.jpg' },
+    { title: 'Hyperopia', description: 'Farsightedness making close objects difficult to focus on.', icon: '◑', photo: '/conditions/hyperopia.jpg' },
+    { title: 'Cataract', description: 'Clouding of the lens leading to blurred or dim vision.', icon: '◯', photo: '/conditions/cataract.jpg' },
+    { title: 'Glaucoma', description: 'Increased eye pressure that can damage the optic nerve.', icon: '◇', photo: '/conditions/glaucoma.jpg' },
+    { title: 'Dry Eye', description: 'Insufficient or poor-quality tears causing irritation and discomfort.', icon: '≈', photo: '/conditions/dry-eye.jpg' },
+    { title: 'Diabetic Retinopathy', description: 'Diabetes-related damage to retinal blood vessels.', icon: '✚', photo: '/conditions/diabetic-retinopathy.jpg' }
   ];
 
   doctors: Doctor[] = [
