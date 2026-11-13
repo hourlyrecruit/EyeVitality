@@ -1,0 +1,17 @@
+/* Fixed, full-viewport layer that lives behind the page shell's content.
+   The negative z-index keeps it just above the shell background but below
+   every section, so cards and panels stay fully readable. */
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  pointer-events: none;
+}
+
+.bg-canvas,
+.bg-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

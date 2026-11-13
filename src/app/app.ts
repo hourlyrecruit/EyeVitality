@@ -15,6 +15,7 @@ if (typeof window !== 'undefined' && typeof window.matchMedia !== 'function') {
 
 import { Component, AfterViewInit, OnDestroy, signal } from '@angular/core';
 import { EyeSceneComponent } from './features/eye-scene/eye-scene.component';
+import { BackgroundSceneComponent } from './features/background-scene/background-scene.component';
 import { TiltCardDirective } from './shared/tilt-card.directive';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -31,7 +32,7 @@ interface AboutFeature { icon: string; title: string; text: string; }
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [EyeSceneComponent, TiltCardDirective],
+  imports: [EyeSceneComponent, BackgroundSceneComponent, TiltCardDirective],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
@@ -104,6 +105,17 @@ export class App implements AfterViewInit, OnDestroy {
 
     gsap.to('.float-card', { y: -8, duration: 2.8, ease: 'sine.inOut', yoyo: true, repeat: -1, stagger: 0.45 });
 
+    // Ambient background motion: the outer backdrop panels lag behind the
+    // scroll (depth) and the hero auras drift on slow orbits.
+    gsap.to('.backdrop-shape', {
+      y: 170,
+      ease: 'none',
+      scrollTrigger: { trigger: 'main', start: 'top top', end: '+=1600', scrub: 1.1 }
+    });
+
+    gsap.to('.aura-teal', { x: 26, y: -18, duration: 7, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    gsap.to('.aura-amber', { x: -22, y: 14, duration: 8.5, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+
     document.querySelectorAll('.reveal').forEach((el) => {
       gsap.fromTo(el, { y: 24 }, {
         y: 0, duration: 0.8, ease: 'power3.out',
@@ -114,5 +126,6 @@ export class App implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     ScrollTrigger.getAll().forEach(t => t.kill());
+    gsap.killTweensOf('.aura-teal, .aura-amber, .float-card');
   }
 }
