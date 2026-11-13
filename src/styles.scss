@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #04070d;
+  --bg-2: #070c14;
+  --bg-3: #0b1420;
+  --cyan: #67e8f9;
+  --blue: #3b82f6;
+  --purple: #8b5cf6;
+  --text: #eef5ff;
+  --muted: #8fa3ba;
+  --card: rgba(255,255,255,0.032);
+  --border: rgba(255,255,255,0.07);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,h2,h3,h4 { font-family: 'Sora', sans-serif; }
+
+button, input, textarea { font: inherit; }
+a { -webkit-tap-highlight-color: transparent; text-decoration: none; color: inherit; }
+
+::selection { background: var(--cyan); color: #050b16; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
